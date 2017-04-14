@@ -1,0 +1,14 @@
+{%extends '../layout/base.html'%} {% block content%}
+
+<form method="POST" enctype="multipart/form-data">
+    <h2>标题</h2>
+    <input type="text" name="title">
+    <input type="file" name="words" value="" multiple="multiple">
+    <button type="submit">提交</button>
+    <select name="category">
+        <option value="web前端">web前端</option>
+        <option value="ui设计">ui设计</option>
+  
+    </select>
+</form>
+{% endblock%}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        iframe,
+        embed {
+            width: 100%;
+            height: 100vh;
+        }
+
+        @media print {
+            @page {
+                size: 210mm 297mm;
+                /* or size: 794px 1123px;   */
+                size: 297mm 420mm;
+                /* or size: 1123px 1588px;  */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>安全的pdf: {{url}}</h1>
+
+
+    <embed id="embed" oncontextmenu="return false" src="http://localhost:3000/uploads/admin/CSS%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97(%E7%AC%AC3%E7%89%88%20%E4%B8%AD%E6%96%87%E7%89%88).pdf"
+        item-width="100%">
+
+
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        $('#embed').mousedown(function (e) {
+            if (e.which == 3) {
+                e.preventDefault();
+                return false;
+            }
+        })
+    </script>
+</body>
+
+</html>

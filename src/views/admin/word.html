@@ -1,0 +1,16 @@
+{%extends '../layout/base.html'%} {% block content%}
+
+
+<button type="button" class="btn btn-large btn-block btn-default">上传课件</button>
+<table class="table ">
+    {% for word in words%}
+    <tr>
+        <td>hello</td>
+        <td>{{word.title}}</td>
+        <td>可下载版本:<a href="{{word.words}}" target="_blank">{{word.words}}</a></td>
+        <td>只可预览版本<a href="/safepdf?url={{word.words}}" target="_blank">{{word.words}}</a></td>
+    </tr>
+    {%endfor%}
+
+</table>
+{% endblock%}

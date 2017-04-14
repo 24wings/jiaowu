@@ -1,0 +1,23 @@
+{% extends '../layout/base.html'%} {% block content%}
+<h1>上传web前端页面</h1>
+<form method="post" action="/work/upload/web" enctype="multipart/form-data">
+    <h4>上传的文件,请以index.html为上传入口</h4>
+    <input type="file" name="files" multiple="multiple">
+    <h4>预览图片</h4>
+    <input type="file" name="preview" onchange="preview(this,$('#previewWeb'))">
+    <img alt="" id="previewWeb">
+    <button type="submit">提交</button>
+</form>
+{%endblock%} {% block script%}
+<script>
+    function preview(fileInput, $el) {
+        var file = fileInput.files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var data = e.target.result;
+            $el.attr('src', data);
+        }
+        reader.readAsDataURL(file);
+    }
+</script>
+{% endblock%}
