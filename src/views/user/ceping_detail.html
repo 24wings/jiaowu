@@ -1,0 +1,51 @@
+{%extends '../layout/base.html'%} {%block content%}
+
+<div class="container">
+    <div class="col-md-6">
+        {{ceping.title}}
+    </div>
+    <div>
+        <div class="col-md-6">
+            <form method="POST">
+
+                {%if userRadio %}
+                <div class="row">
+                    <h4>你选的答案</h4>
+                </div>
+                <div class="row">
+                    <input type="radio" name="anwser" value="A" disabled {%if userRadio.anwser=='A' %} checked="checked" {%endif%}> A: {{ceping.radio.A}}
+                </div>
+                <div class="row">
+                    <input type="radio" name="anwser" value="B" disabled {%if userRadio.anwser=='B' %} checked="checked" {%endif%}> B :{{ceping.radio.B}}
+                </div>
+                <div class="row">
+                    <input type="radio" name="anwser" value="C" disabled {%if userRadio.anwser=='C' %} checked="checked" {%endif%}> C: {{ceping.radio.C}}
+                </div>
+                <div class="row">
+                    <input type="radio" name="anwser" value="D" disabled {%if userRadio.anwser=='D' %} checked="checked" {%endif%}> D: {{ceping.radio.D}}
+                </div>
+                {{JSON.stringify(userRadio)}} {% if userRadio.anwser%} 你选择的答案:{{userRadio.anwser}}
+                <h4>答案:{{ceping.jieda}} </h4>
+                <a onclick="history.back()" class="btn btn-primary">返回</a> {%endif %} {%endif %} {%if !userRadio %}
+                <div class="row">
+                    <input type="radio" name="anwser" value="A"> A: {{ceping.radio.A}}
+                </div>
+                <div class="row">
+                    <input type="radio" name="anwser" value="B"> B :{{ceping.radio.B}}
+                </div>
+                <div class="row">
+                    <input type="radio" name="anwser" value="C"> C: {{ceping.radio.C}}
+                </div>
+                <div class="row">
+                    <input type="radio" name="anwser" value="D"> D: {{ceping.radio.D}}
+                </div>
+                {% if !userRadio.anwser%}
+                <button class="btn" type="submit">提交</button> {%endif%} {%endif %}
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+{%endblock%}

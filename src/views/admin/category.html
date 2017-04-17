@@ -1,0 +1,30 @@
+ {% extends '../layout/base.html'%} {%block content%}
+
+
+<table class="table">
+    <thead>
+        <th>题目</th>
+        <th>题目数量</th>
+
+        <th>操作</th>
+    </thead>
+    {% for category in categorys%}
+    <tr>
+        <td>{{category.title}}</td>
+        <td></td>
+
+        <td> <a href="/admin/category/{{category._id+" "}}" class="btn btn-primary">管理</a></td>
+    </tr>
+    {% endfor %}
+
+
+</table>
+
+
+<h2>新增分类</h2>
+<form action="/admin/category/" method="POST">
+    <input type="text" name="title">
+    <button type="submit">提交</button>
+</form>
+
+{% endblock%}

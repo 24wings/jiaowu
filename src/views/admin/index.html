@@ -1,4 +1,8 @@
 {%extends '../layout/base.html'%} {% block content%}
-
+<form method="POST" action="/admin/signout">
+    <button class="btn btn-default" type="submit">登出</button>
+</form>
 <a href="/admin/word/">所有课件</a>
-<a href="/admin/word/upload">上传课件</a> {% endblock%}
+<a href="/admin/word/upload">上传课件</a>
+<a href="/admin/category">测评分类</a>
+<a href="/admin/ceping">所有测评</a> {% endblock%}

@@ -1,0 +1,49 @@
+{%extends '../layout/base.html'%} {%block content %}
+
+<h2>测评</h2>
+
+<form method="POST">
+    <input type="text" hidden value="radio" name="type">
+
+    <h4>添加单选题</h4>
+    <input type="text" name="title" value="{{ceping.title}}"><br> 选择A:
+    <input type="text" name="radio.A" value="{{ceping.radio.A}}"> 选择B:
+    <input type="text" name="radio.B" value="{{ceping.radio.B}}"> 选择C:
+    <input type="text" name="radio.C" value="{{ceping.radio.C}}"> 选择D:
+    <input type="text" name="radio.D" value="{{ceping.radio.D}}"><br>正确答案
+    <select name="correct">
+        <option value="A" {% if celping.correct=='A' %} selected="selected" {%endif%} >A</option>
+        <option value="B" {% if celping.correct=='B' %} selected="selected" {%endif%}>B</option>
+        <option value="C" {% if celping.correct=='C' %} selected="selected" {%endif%}>C</option>
+        <option value="D" {% if celping.correct=='D' %} selected="selected" {%endif%}>D</option>
+    </select><br>
+    <h4>解答</h4>
+    <input type="text" name="jieda" value="{{ceping.jieda}}">
+    <h4>分类</h4>
+    <select name="category">
+     {% for category in categorys%}
+        <option value="{{category._id.toString()}}">{{category.title}}</option>
+        {%endfor%}
+    </select>
+</form>
+<button class="btn btn-success" onclick="save()"> 保存</button>
+<button class="btn btn-danger" onclick="remove()">删除</button> {%endblock%} {%block script%}
+<script>
+    function remove() {
+        var action = $('form').get(0).action;
+        $.ajax(action, {
+            method: 'DELETE',
+            success: function(rtn) {
+                if (rtn.issuccess) {
+                    location.href = "/admin/category"
+                }
+            }
+        })
+    }
+
+    function save() {
+        $('form').get(0).method = "post";
+        $('form').submit();
+    }
+</script>
+{%endblock%}

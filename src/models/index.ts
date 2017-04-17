@@ -1,11 +1,11 @@
 import mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/wanviv');
+mongoose.connect('mongodb://118.89.38.111/wanviv');
 
 export { IAdmin, adminModel } from './admin';
 export { IUser, userModel } from './user';
 export { IWebwork, webworkModel } from './webwork';
-export { anwserQuestionModel, IAnwserQuestion } from './anwser-question';
+export { cepingModel, ICeping } from './ceping';
 export { categoryModel, ICategory } from './category';
 export { paperAnwserModel, IPaperAnwser } from './paper-anwser';
 export { paperModel, IPaper } from './paper';

@@ -1,3 +1,3 @@
 export { homeRouter } from './home/index';
-export { workRouter } from './work/index';
+export { userRouter } from './user/index';
 export { adminRouter } from './admin/index';

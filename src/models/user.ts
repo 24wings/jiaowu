@@ -10,6 +10,13 @@ var userSchema = new mongoose.Schema({
     signature: String,
     createDt: { type: Date, default: Date.now },
     updateDt: { type: Date, default: Date.now },
+    // 已经回答的　单选题测评
+    radios: {
+        type: [{
+            ceping: { type: mongoose.Schema.Types.ObjectId, ref: 'Ceping' },
+            anwser: String
+        }], default: []
+    }
 
 });
 

@@ -3,9 +3,7 @@ export function checkLogin(req: express.Request, res: express.Response, next) {
     if (req.session.user) {
         next();
     } else {
-        res.render('home/signin', {
-            error: '未登录'
-        });
+        res.redirect('home/signin');
     }
 }
 

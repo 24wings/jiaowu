@@ -1,13 +1,9 @@
 import mongoose = require('mongoose');
+import { ICeping } from './ceping';
 
 // 考试内容内容分类
 var categorySchema = new mongoose.Schema({
-    name: String,
-    avatar: String,
-    password: String,
-    gender: String,
-    email: String,
-    signature: String,
+    title: String,
     createDt: { type: Date, default: Date.now },
     updateDt: { type: Date, default: Date.now },
 
@@ -15,13 +11,9 @@ var categorySchema = new mongoose.Schema({
 
 
 export interface ICategory extends mongoose.Document {
-    avatar: string;
-    name: string;
-    password: string;
-    gender: string;
-    email: string;
-    signature: string;
-
+    //标题
+    title: String;
+    ceping: [ICeping];
 }
 
 export var categoryModel = mongoose.model<ICategory>('Category', categorySchema);

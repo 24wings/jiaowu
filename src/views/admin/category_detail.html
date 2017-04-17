@@ -1,0 +1,47 @@
+{%extends '../layout/base.html'%} {% block content%}
+<h2>测评详情</h2>
+
+
+{{JSON.stringify(category)}}
+<form method="POST" id="category-detail">
+    <input type="text" name="_id" value="{{category._id.toString()}}" hidden>
+    <input type="text" name="title" value="{{category.title}}">
+</form>
+<table class="table">
+    <thead>
+        <th>id</th>
+        <th>题目</th>
+        <th>类型</th>
+        <th>操作</th>
+    </thead>
+    {%for item in list%}
+    <tr>
+        <td>{{item._id.toString()}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.type}}</td>
+        <td onclick="remove('{{item._id.toString()}}')"><button class="btn">移出答题</button></td>
+    </tr>
+    {%endfor%}
+
+</table>
+<button class="btn btn-success" onclick="save()">保存</button>
+<button class="btn btn-danger" onclick="remove()">删除</button> {% endblock%} {%block script%}
+<script>
+    function remove() {
+        var action = $('#category-detail').get(0).action;
+        $.ajax(action, {
+            method: 'DELETE',
+            success: function(rtn) {
+                if (rtn.issuccess) {
+                    location.href = "/admin/category"
+                }
+            }
+        })
+    }
+
+    function save() {
+        $('#category-detail').get(0).method = "post";
+        $('#category-detail').submit();
+    }
+</script>
+{%endblock%}

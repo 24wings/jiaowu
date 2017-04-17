@@ -18,7 +18,7 @@ router.route('/signin')
         var user = await userModel.findOne({ name, password }).exec();
         if (user) {
             req.session.user = user;
-            res.redirect('work')
+            res.redirect('/user')
 
         } else {
             res.render('home/signin', { error: '用户名不正确' })

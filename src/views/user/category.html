@@ -1,0 +1,36 @@
+{%extends '../layout/base.html'%} {% block content%}
+<h2>{{JSON.stringify(cepings)}}</h2>
+
+<table class="table">
+    <thead>
+        <th>标题</th>
+        <th>内容简介</th>
+        <th>是否完成</th>
+    </thead>
+
+</table>
+
+<div class="container">
+    <div class="row">
+        {%for category in categorys%}
+
+
+
+        <div class="col-md-6">
+
+            <div class="media media-middle">
+                <a class="pull-left" href="#">
+                    <img class="media-object " width="60px" height="60px" src="http://mooc.edusoho.com/assets/img/default/course.png?1.6.6">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading"><a href="/user/category/{{category._id.toString()}}">{{category.title}}</a></h4>
+                    <p>{{category.title}}</p>
+                </div>
+            </div>
+
+        </div>
+        {%endfor%}
+
+    </div>
+</div>
+{%endblock%}

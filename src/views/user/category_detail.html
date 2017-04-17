@@ -1,0 +1,26 @@
+{%extends '../layout/base.html'%} {%block content%} {{JSON.stringify(category)}} {{JSON.stringify(cepings)}}
+
+
+<h3>测评</h3>
+{{JSON.stringify(user)}}
+<table class="table">
+
+    <thead>
+        <th>题目</th>
+        <th>是否已经回答</th>
+    </thead>
+    {%for ceping in cepings%}
+    <tr>
+        <td>{{ceping.title}}</td>
+        <td>
+            <!--已经回答的问题-->
+            {%if ceping.isAnwser %}
+            <a class="btn btn-primary" href="/user/ceping/{{ceping._id.toString()}}">复习</a> {%endif %} {%if !ceping.isAnwser %}
+            <a href="/user/ceping/{{ceping._id.toString()}}" class="btn btn-success">去回答</a> {%endif %}
+        </td>
+    </tr>
+    {%endfor%}
+</table>
+
+
+{%endblock%}
